@@ -1,13 +1,128 @@
-<h2>{{message}}</h2>
-<p>This is a Laravel-like boilerplate for Node.js Express.</p>
+<div class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Larify</h1>
+    <p class="hero-subtitle">A Modern Laravel-like Framework for Node.js</p>
+    <div class="hero-actions">
+      <a href="/docs" class="btn btn-primary">Get Started</a>
+      <a href="https://github.com/yourusername/larify" class="btn btn-secondary">View on GitHub</a>
+    </div>
+  </div>
+  <div class="hero-illustration">
+    <div class="code-window">
+      <div class="code-header">
+        <div class="code-dot"></div>
+        <div class="code-dot"></div>
+        <div class="code-dot"></div>
+        <span>example.js</span>
+      </div>
+      <pre class="code-content"><code>// Create a new controller
+const PostController = new Controller({
+  async index(req, res) {
+    const posts = await Post.all();
+    return res.view('posts.index', { posts });
+  },
+  
+  async show(req, res) {
+    const post = await Post.find(req.params.id);
+    return res.view('posts.show', { post });
+  }
+});</code></pre>
+    </div>
+  </div>
+</div>
+
+<section class="features">
+  <h2 class="section-title">Why Choose Larify?</h2>
+  
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🚀</div>
+      <h3>Fast Development</h3>
+      <p>Build applications quickly with a familiar Laravel-like syntax and structure.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🛠️</div>
+      <h3>Powerful CLI</h3>
+      <p>Generate controllers, models, and run migrations with our Artisan-like command line tool.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔄</div>
+      <h3>Easy Transition</h3>
+      <p>Smoothly transition from PHP/Laravel to Node.js while keeping familiar patterns.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🎨</div>
+      <h3>Modern UI</h3>
+      <p>Beautiful themes and components out of the box with light and dark mode support.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Authentication</h3>
+      <p>Built-in authentication system with middleware and session management.</p>
+    </div>
+    
+    <div class="feature-card">
+      <div class="feature-icon">📝</div>
+      <h3>Documentation</h3>
+      <p>Comprehensive guides and code examples to get you started quickly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="getting-started">
+  <div class="terminal">
+    <div class="terminal-header">
+      <div class="terminal-dot"></div>
+      <div class="terminal-dot"></div>
+      <div class="terminal-dot"></div>
+      <span>terminal</span>
+    </div>
+    <div class="terminal-content">
+      <p><span class="terminal-prompt">$</span> npm install larify</p>
+      <p><span class="terminal-prompt">$</span> npx larify new my-project</p>
+      <p><span class="terminal-prompt">$</span> cd my-project</p>
+      <p><span class="terminal-prompt">$</span> npm run dev</p>
+      <p class="terminal-output">Server running at http://localhost:3000</p>
+    </div>
+  </div>
+  
+  <div class="cta-box">
+    <h3>Ready to Begin?</h3>
+    <p>Start building your next Node.js application with the elegance of Laravel</p>
+    <div class="cta-actions">
+      <a href="/docs" class="btn btn-primary">Read the Docs</a>
+      <a href="/docs/examples" class="btn btn-outline">View Examples</a>
+    </div>
+  </div>
+</section>
 
 {{#if users.length}}
-  <h3>Users:</h3>
-  <ul>
-    {{#each users}}
-      <li>{{this.name}} ({{this.email}})</li>
-    {{/each}}
-  </ul>
-{{else}}
-  <p>No users found. Run migrations to create the users table.</p>
+<section class="demo-section">
+  <h2 class="section-title">Demo Data</h2>
+  <div class="card">
+    <div class="card-header">Users in Database</div>
+    <div class="card-body">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+            <tr>
+              <td>{{this.name}}</td>
+              <td>{{this.email}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
 {{/if}}
