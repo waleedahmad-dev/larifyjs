@@ -1,0 +1,65 @@
+<h1 class="mb-4">Larify Documentation</h1>
+
+<div class="card mb-4">
+  <div class="card-header">Getting Started</div>
+  <p>Welcome to Larify, a Laravel-like framework for Node.js. This guide will help you understand how to use the framework effectively.</p>
+  
+  <h3>Installation</h3>
+  <ol>
+    <li>Clone the repository: <code>git clone https://github.com/yourusername/larify.git</code></li>
+    <li>Install dependencies: <code>npm install</code></li>
+    <li>Copy .env.example to .env: <code>cp .env.example .env</code></li>
+    <li>Configure your database in the .env file</li>
+    <li>Run migrations: <code>npm run migrate</code></li>
+    <li>Start the server: <code>npm run dev</code></li>
+  </ol>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Framework Structure</div>
+  <p>Larify follows Laravel's directory structure to make it familiar for PHP developers:</p>
+  
+  <h4>Core Directories</h4>
+  <ul>
+    <li><strong>app/</strong> - Application logic</li>
+    <li><strong>config/</strong> - Configuration files</li>
+    <li><strong>database/</strong> - Database migrations</li>
+    <li><strong>public/</strong> - Static assets</li>
+    <li><strong>resources/</strong> - Views and assets</li>
+    <li><strong>routes/</strong> - Route definitions</li>
+    <li><strong>storage/</strong> - Logs and cache</li>
+  </ul>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Command Line Interface</div>
+  <p>Larify comes with a powerful CLI similar to Laravel's Artisan:</p>
+  
+  <h4>Available Commands</h4>
+  <pre><code>node bin/larify make:controller UserController --resource
+node bin/larify make:model User --migration
+node bin/larify migrate
+node bin/larify migrate:reset
+node bin/larify serve</code></pre>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Next Steps</div>
+  <p>Now that you have Larify up and running, here are some next steps:</p>
+  
+  <h4>Create Your First Controller</h4>
+  <pre><code>node bin/larify make:controller BlogController --resource</code></pre>
+  
+  <h4>Define Routes</h4>
+  <p>Add routes in <code>routes/web.js</code>:</p>
+  <pre><code>router.get('/blog', BlogController.index);
+router.get('/blog/:id', BlogController.show);</code></pre>
+  
+  <h4>Create Models and Migrations</h4>
+  <pre><code>node bin/larify make:model Post --migration</code></pre>
+</div>
+
+<div class="card">
+  <div class="card-header">Need Help?</div>
+  <p>Check out our <a href="/docs/theme">Theme Documentation</a> or visit our <a href="/docs/examples">Code Examples</a> section.</p>
+</div>

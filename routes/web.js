@@ -12,6 +12,11 @@ const guest = require('../app/middleware/guest');
 router.get('/', HomeController.index);
 router.get('/about', HomeController.about);
 
+// Documentation routes
+router.get('/docs', (req, res) => {
+  res.render('docs/index', { title: 'Documentation' });
+});
+
 // Auth routes (guest only)
 router.get('/login', guest, AuthController.showLogin.bind(AuthController));
 router.post('/login', guest, LoginRequest.validate(LoginRequest), AuthController.login.bind(AuthController));
