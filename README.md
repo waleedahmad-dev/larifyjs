@@ -18,23 +18,27 @@ A Laravel-like framework for Node.js Express, designed to provide PHP developers
 ## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/larify.git
    cd larify
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Set up environment:
+
    ```bash
    cp .env.example .env
    # Edit .env with your database details
    ```
 
 4. Run migrations:
+
    ```bash
    npm run migrate
    ```
@@ -103,17 +107,17 @@ node bin/larify make:model User --migration                # Create model with m
 
 ## Laravel to Node.js Comparison
 
-| Laravel | Larify |
-|---------|--------|
-| Eloquent Models | Model class with active record pattern |
-| Blade Templates | Handlebars with layouts and partials |
+| Laravel                                  | Larify                                 |
+| ---------------------------------------- | -------------------------------------- |
+| Eloquent Models                          | Model class with active record pattern |
+| Blade Templates                          | Handlebars with layouts and partials   |
 | Route::get('/path', 'Controller@method') | router.get('/path', Controller.method) |
-| Middleware | Express middleware |
-| FormRequest | Request validation class |
-| Artisan CLI | Larify CLI |
-| Service Providers | Service provider classes |
-| Dependency Injection | Module exports/imports |
-| Facades | Global helper functions |
+| Middleware                               | Express middleware                     |
+| FormRequest                              | Request validation class               |
+| Artisan CLI                              | Larify CLI                             |
+| Service Providers                        | Service provider classes               |
+| Dependency Injection                     | Module exports/imports                 |
+| Facades                                  | Global helper functions                |
 
 ## Contributing
 
