@@ -1,0 +1,33 @@
+{
+  "name": "larify",
+  "version": "1.0.0",
+  "description": "A Laravel-like framework for Node.js Express",
+  "main": "app.js",
+  "bin": {
+    "larify": "./bin/larify.js"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "migrate": "node bin/larify migrate",
+    "migrate:make": "node bin/larify make:migration",
+    "migrate:reset": "node bin/larify migrate:reset",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "keywords": ["express", "laravel", "nodejs", "framework"],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.0",
+    "mysql2": "^3.6.0",
+    "express-handlebars": "^7.1.0",
+    "dotenv": "^16.3.0",
+    "knex": "^3.0.0",
+    "commander": "^11.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "eslint": "^8.50.0"
+  }
+}
