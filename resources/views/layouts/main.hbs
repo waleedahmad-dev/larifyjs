@@ -14,23 +14,23 @@
 <body>
   {{> header}}
 
-  <div class="container">
-    {{#if flash.success}}
-      <div class="alert alert-success">
-        {{flash.success}}
-      </div>
-    {{/if}}
+  <main>
+    <div class="container">
+      {{#if flash.success}}
+        <div class="alert alert-success">
+          {{flash.success}}
+        </div>
+      {{/if}}
 
-    {{#if flash.error}}
-      <div class="alert alert-danger">
-        {{flash.error}}
-      </div>
-    {{/if}}
+      {{#if flash.error}}
+        <div class="alert alert-danger">
+          {{flash.error}}
+        </div>
+      {{/if}}
 
-    <main>
       {{{body}}}
-    </main>
-  </div>
+    </div>
+  </main>
 
   {{> footer}}
   
