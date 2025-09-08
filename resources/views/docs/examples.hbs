@@ -1,0 +1,151 @@
+<h1 class="mb-4">Code Examples</h1>
+
+<div class="card mb-4">
+  <div class="card-header">Creating a Controller</div>
+  <p>Controllers handle incoming requests and return responses. Here's how to create a controller in Larify:</p>
+  
+  <h4>Creating a Controller via CLI</h4>
+  <pre><code>node bin/larify make:controller PostController --resource</code></pre>
+  
+  <h4>Manual Controller Creation</h4>
+  <p>Create a file at <code>app/controllers/PostController.js</code>:</p>
+  <pre><code>const Controller = require('../core/Controller');
+const Post = require('../models/Post');
+
+class PostController extends Controller {
+  constructor() {
+    super();
+    // Bind methods to preserve this context
+    this.index = this.index.bind(this);
+    this.show = this.show.bind(this);
+    this.create = this.create.bind(this);
+    this.store = this.store.bind(this);
+  }
+
+  async index(req, res) {
+    const posts = await Post.all();
+    return res.render('posts/index', { 
+      title: 'All Posts', 
+      posts 
+    });
+  }
+
+  async show(req, res) {
+    const post = await Post.find(req.params.id);
+    if (!post) {
+      return res.status(404).render('errors/404');
+    }
+    
+    return res.render('posts/show', { 
+      title: post.title, 
+      post 
+    });
+  }
+
+  create(req, res) {
+    return res.render('posts/create', { 
+      title: 'Create Post' 
+    });
+  }
+
+  async store(req, res) {
+    try {
+      const post = await Post.create({
+        title: req.body.title,
+        content: req.body.content,
+        user_id: req.session.user.id
+      });
+      
+      req.flash('success', 'Post created successfully');
+      return res.redirect(`/posts/${post.id}`);
+    } catch (error) {
+      req.flash('error', 'Error creating post');
+      return res.redirect('/posts/create');
+    }
+  }
+}</code></pre>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Creating a Model</div>
+  <p>Models represent your database tables and handle data manipulation:</p>
+  
+  <h4>Creating a Model via CLI</h4>
+  <pre><code>node bin/larify make:model Post --migration</code></pre>
+  
+  <h4>Manual Model Creation</h4>
+  <p>Create a file at <code>app/models/Post.js</code>:</p>
+  <pre><code>const Model = require('../core/Model');
+
+class Post extends Model {
+  static get table() {
+    return 'posts';
+  }
+  
+  static get fillable() {
+    return ['title', 'content', 'user_id'];
+  }
+  
+  // Define relationships
+  async user() {
+    const User = require('./User');
+    return User.find(this.user_id);
+  }
+  
+  // Define scopes
+  static published() {
+    return this.where('published', true);
+  }
+}
+
+module.exports = Post;</code></pre>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Defining Routes</div>
+  <p>Routes map URLs to controller actions:</p>
+  
+  <pre><code>const express = require('express');
+const router = express.Router();
+const PostController = require('../app/controllers/PostController');
+const auth = require('../app/middleware/auth');
+
+// Public routes
+router.get('/posts', PostController.index);
+router.get('/posts/:id', PostController.show);
+
+// Protected routes
+router.get('/posts/create', auth, PostController.create);
+router.post('/posts', auth, PostController.store);
+router.get('/posts/:id/edit', auth, PostController.edit);
+router.put('/posts/:id', auth, PostController.update);
+router.delete('/posts/:id', auth, PostController.destroy);
+
+module.exports = router;</code></pre>
+</div>
+
+<div class="card">
+  <div class="card-header">Creating Migrations</div>
+  
+  <h4>Creating a Migration via CLI</h4>
+  <pre><code>node bin/larify make:migration create_posts_table</code></pre>
+  
+  <h4>Example Migration</h4>
+  <p>Create a file in <code>database/migrations</code>:</p>
+  <pre><code>exports.up = function(knex) {
+  return knex.schema.createTable('posts', function(table) {
+    table.increments('id').primary();
+    table.string('title').notNullable();
+    table.text('content').notNullable();
+    table.integer('user_id').unsigned().references('id').inTable('users');
+    table.boolean('published').defaultTo(false);
+    table.timestamps(true, true);
+  });
+};
+
+exports.down = function(knex) {
+  return knex.schema.dropTable('posts');
+};</code></pre>
+
+  <p>Return to the <a href="/docs">Documentation Home</a> for more information.</p>
+</div>

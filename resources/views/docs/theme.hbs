@@ -1,0 +1,87 @@
+<h1 class="mb-4">Theme Customization</h1>
+
+<div class="card mb-4">
+  <div class="card-header">Theming System</div>
+  <p>Larify includes a flexible theming system that allows you to easily switch between light and dark modes and customize your application's appearance.</p>
+  
+  <h3>CSS Variables</h3>
+  <p>The framework uses CSS variables to manage colors and styles:</p>
+  <pre><code>:root {
+  --primary-color: #4a6cf7;
+  --secondary-color: #6b7280;
+  --background-color: #ffffff;
+  --text-color: #1f2937;
+  --card-background: #f9fafb;
+  --border-color: #e5e7eb;
+  --header-background: #f3f4f6;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+}</code></pre>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Implementing Dark Mode</div>
+  
+  <p>To implement dark mode in your application, you can add the following JavaScript to your layout:</p>
+  
+  <h4>Add Theme Toggle to Layout</h4>
+  <pre><code>&lt;button id="theme-toggle" class="btn btn-sm">
+  &lt;i class="icon-moon">&lt;/i> Toggle Theme
+&lt;/button>
+
+&lt;script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+  
+  // Initialize theme from local storage or system preference
+  function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark.matches)) {
+      document.documentElement.classList.add('dark-theme');
+    }
+  }
+  
+  // Toggle theme
+  themeToggle.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark-theme');
+    const isDark = document.documentElement.classList.contains('dark-theme');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
+  
+  // Initialize on page load
+  initTheme();
+&lt;/script></code></pre>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">Dark Theme CSS Variables</div>
+  
+  <p>Add these CSS rules to implement dark mode:</p>
+  
+  <pre><code>.dark-theme {
+  --primary-color: #6d8bfa;
+  --secondary-color: #9ca3af;
+  --background-color: #111827;
+  --text-color: #f9fafb;
+  --card-background: #1f2937;
+  --border-color: #374151;
+  --header-background: #1f2937;
+  --success-color: #34d399;
+  --error-color: #f87171;
+  --warning-color: #fbbf24;
+}</code></pre>
+</div>
+
+<div class="card">
+  <div class="card-header">Component Theming</div>
+  <p>All components in Larify automatically adapt to theme changes. To theme a custom component, use the CSS variables:</p>
+  
+  <pre><code>.custom-component {
+  background-color: var(--card-background);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}</code></pre>
+  
+  <p>Return to the <a href="/docs">Documentation Home</a> for more information.</p>
+</div>

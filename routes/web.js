@@ -16,6 +16,12 @@ router.get('/about', HomeController.about);
 router.get('/docs', (req, res) => {
   res.render('docs/index', { title: 'Documentation' });
 });
+router.get('/docs/theme', (req, res) => {
+  res.render('docs/theme', { title: 'Theme Documentation' });
+});
+router.get('/docs/examples', (req, res) => {
+  res.render('docs/examples', { title: 'Code Examples' });
+});
 
 // Auth routes (guest only)
 router.get('/login', guest, AuthController.showLogin.bind(AuthController));

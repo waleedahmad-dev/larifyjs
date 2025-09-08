@@ -1,6 +1,6 @@
-# Larify
+# Larify Framework
 
-A Laravel-like framework for Node.js Express, designed to provide PHP developers with familiar structure and commands. Larify makes it easy to transition from Laravel to Node.js while maintaining the same development patterns.
+Larify is a Laravel-like framework for Node.js Express, designed to provide PHP developers with familiar structure and commands. Larify makes it easy to transition from Laravel to Node.js while maintaining the same development patterns and conventions.
 
 ## Features
 
@@ -14,6 +14,8 @@ A Laravel-like framework for Node.js Express, designed to provide PHP developers
 - **Authentication**: Built-in user authentication system
 - **Session and Flash Messages**: Express-session with connect-flash for notifications
 - **Helper Functions**: Global helpers like in Laravel
+- **Theme Support**: Light and dark mode with CSS variables
+- **Documentation**: Built-in documentation pages with code examples
 
 ## Installation
 
