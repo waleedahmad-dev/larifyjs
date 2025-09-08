@@ -20,7 +20,7 @@ A Laravel-like framework for Node.js Express, designed to provide PHP developers
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/larify.git
+   git clone https://github.com/waleedahmad-dev/larify.git
    cd larify
    ```
 
