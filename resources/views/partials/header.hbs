@@ -14,16 +14,11 @@
         <li><a href="/docs">Documentation</a></li>
         <li><a href="/docs/examples">Examples</a></li>
         <li><a href="/about">About</a></li>
+        {{#if user}}
+          <li><a href="/dashboard">Dashboard</a></li>
+          <li><a href="/logout">Logout</a></li>
+        {{/if}}
       </ul>
     </nav>
-    <div class="header-actions">
-      {{#if user}}
-        <a href="/dashboard" class="btn btn-sm">Dashboard</a>
-        <a href="/logout" class="btn btn-sm btn-outline">Logout</a>
-      {{else}}
-        <a href="/login" class="btn btn-sm">Login</a>
-        <a href="/register" class="btn btn-sm btn-primary">Register</a>
-      {{/if}}
-    </div>
   </div>
 </header>
