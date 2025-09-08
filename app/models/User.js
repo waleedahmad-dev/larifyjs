@@ -1,18 +1,39 @@
-const knex = require('knex');
-const knexConfig = require('../../knexfile');
-const db = knex(knexConfig.development);
+const Model = require('../core/Model');
+const bcrypt = require('bcryptjs');
 
-class User {
-  static async all() {
-    return await db('users');
+class User extends Model {
+  static getTable() {
+    return 'users';
   }
 
-  static async find(id) {
-    return await db('users').where({ id }).first();
+  // Hide password from JSON output
+  toJSON() {
+    const json = super.toJSON();
+    delete json.password;
+    return json;
   }
 
-  static async create(data) {
-    return await db('users').insert(data);
+  // Set password with hashing
+  async setPassword(password) {
+    const salt = await bcrypt.genSalt(10);
+    this.set('password', await bcrypt.hash(password, salt));
+    return this;
+  }
+
+  // Verify password
+  async verifyPassword(password) {
+    return await bcrypt.compare(password, this.get('password'));
+  }
+
+  // Define relationships
+  posts() {
+    return this.hasMany('Post');
+  }
+
+  // Relationship helper methods
+  hasMany(modelName) {
+    const ModelClass = require(`./${modelName}`);
+    return ModelClass.query().where({ user_id: this.get('id') });
   }
 }
 

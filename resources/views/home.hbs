@@ -1,2 +1,13 @@
 <h2>{{message}}</h2>
 <p>This is a Laravel-like boilerplate for Node.js Express.</p>
+
+{{#if users.length}}
+  <h3>Users:</h3>
+  <ul>
+    {{#each users}}
+      <li>{{this.name}} ({{this.email}})</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No users found. Run migrations to create the users table.</p>
+{{/if}}

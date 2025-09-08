@@ -12,22 +12,34 @@
     "migrate": "node bin/larify migrate",
     "migrate:make": "node bin/larify make:migration",
     "migrate:reset": "node bin/larify migrate:reset",
+    "migrate:fresh": "node bin/larify migrate:fresh",
+    "serve": "node bin/larify serve",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
-  "keywords": ["express", "laravel", "nodejs", "framework"],
+  "keywords": [
+    "express",
+    "laravel",
+    "nodejs",
+    "framework"
+  ],
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.0",
-    "mysql2": "^3.6.0",
-    "express-handlebars": "^7.1.0",
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.2",
+    "commander": "^11.0.0",
+    "connect-flash": "^0.1.1",
     "dotenv": "^16.3.0",
+    "express": "^4.18.0",
+    "express-handlebars": "^7.1.0",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.2.1",
     "knex": "^3.0.0",
-    "commander": "^11.0.0"
+    "mysql2": "^3.6.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.0",
-    "eslint": "^8.50.0"
+    "eslint": "^8.50.0",
+    "nodemon": "^3.0.0"
   }
 }
